@@ -1,48 +1,113 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Caves 'N Cliffs</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1 class="title">Caves 'N Cliffs SMP</h1>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script
+      defer
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-id="phibr0"
+      data-description="Support me on Buy me a coffee!"
+      data-message=""
+      data-color="#5F7FFF"
+      data-position="Right"
+      data-x_margin="18"
+      data-y_margin="18"
+    ></script>
+  </head>
+  <body>
+    <h1 class="title">
+      <span>Caves 'N Cliffs SMP</span>
+      <code>play.phibr0.de</code>
+    </h1>
+
+    <h2 class="info-title">Informationen</h2>
+    <div class="info-content">
+      <p>
+        Die meisten von uns haben wahrscheinlich schon früher oft Minecraft
+        gespielt. Um nun den Release der neuen Version "Caves and Cliffs" 1.18
+        zu feiern, haben wir einen Server erstellt. Wenn ihr möchtet, könnt ihr
+        alle umsonst mitspielen, da der Server allerdings dennoch etwas kostet
+        und wir auch viel Zeit in dieses Projekt investiert haben würden wir uns
+        über kleine Spenden freuen, nutzt dazu am besten einfach den kleinen
+        Knopf unten rechts in der Ecke!
+      </p>
+    </div>
 
     <h2 class="discord-title">Der Discord Server</h2>
     <div class="discord-content">
-        <span>
-            Damit wir alle gemeinsam reden können, während wir spielen haben wir auch einen eigenen Discord erstellt.
-            Es gibt genug Kanäle für alle Gruppen, wenn ihr mit euren Freunden einen eigenen haben wollt, könnt ihr den <b>@Admins</b> aber trotzdem bescheid sagen.
-            Natürlich könnt ihr auch euren eigenen benutzen, hier werden aber auch wichtige Updates geteilt.
-        </span>
-        <iframe class="discord-widget" width="350" height="300" allowtransparency="true" frameborder="0" src="https://discord.com/widget?id=877215153836404746&theme=dark" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+      <div class="text">
+        <p>
+          Damit wir alle gemeinsam reden können, während wir spielen haben wir
+          auch einen eigenen Discord erstellt. Es gibt genug Kanäle für alle
+          Gruppen, wenn ihr mit euren Freunden einen eigenen haben wollt, könnt
+          ihr den <b>@Admins</b> aber trotzdem bescheid sagen. Natürlich könnt
+          ihr auch euren eigenen benutzen, hier werden aber auch wichtige
+          Updates geteilt.
+        </p>
+        <p><b>Auch hier gilt: Wer sich nicht benimmt, wird entfernt</b></p>
+        <q>Ein bisschen Trolling ist ok! :D</q>
+      </div>
+      <iframe
+        class="discord-widget"
+        width="350"
+        height="300"
+        allowtransparency="true"
+        frameborder="0"
+        src="https://discord.com/widget?id=877215153836404746&theme=dark"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+      ></iframe>
     </div>
 
     <h2 class="install-title">(Optional) Client-Mods installieren</h2>
     <div class="install-content">
-        <span>
-            Wenn ihr wollt, könnt ihr noch einige Client-Mods installieren, welche die Performance verbessern können, sodass euer Spiel flüssiger läuft, oder ihr verwendet Shader, wodurch euer Spiel um einiges besser aussehen wird:
-        </span>
-        <img src="https://i.imgur.com/lwW1TRa.png" alt="Minecraft mit Shader: Sildurs Vibrant">
+      <p>
+        Wenn ihr wollt, könnt ihr noch einige Client-Mods installieren, welche
+        die Performance verbessern können, sodass euer Spiel flüssiger läuft,
+        oder ihr verwendet Shader, wodurch euer Spiel um einiges besser aussehen
+        wird:
+      </p>
+      <img
+        src="https://i.imgur.com/lwW1TRa.png"
+        alt="Minecraft mit Shader: Sildurs Vibrant"
+      />
     </div>
 
-    <h2 class="tech-title">"Backend"</h2>
+    <h2 class="tech-title">Backend</h2>
     <div class="tech-content">
-        <span>
-            Da es die meisten nicht interessieren wird, ist dieser Teil ganz am Ende xD.
-            Alle Dateien sind online in einem <a href="https://github.com/phibr0/cavesncliffs">Mono-Repo auf Github</a> zu finden.
-            Diese Website wird via Github Pages gehosted und nutzt <a href="https://watercss.kognise.dev">water.css</a> und der Minecraft Server läuft auf einer AWS t3.micro EC2 Instanz.
-        </span>
+      <p>
+        Da es die meisten nicht interessieren wird, ist dieser Teil ganz am Ende
+        xD. Alle Dateien sind online in einem
+        <a href="https://github.com/phibr0/cavesncliffs"
+          >Mono-Repo auf Github</a
+        >
+        zu finden. Diese Website wird via Github Pages gehosted und der
+        Minecraft Server läuft auf einer AWS t3.micro EC2 Instanz.
+      </p>
+      <h3>Repository Struktur:</h3>
+      <pre>
+            <code>
+├───docs            The Website
+├───installer       Code for the Ressource Pack, Shader and Mod Installer
+└───server          Server Code running on AWS Infrastructure
+            </code>
+        </pre>
     </div>
-    
+
     <footer>
-        <span class="credits">
-            By Phillip, Simon
-        </span>
-        <a href="#">Back to top ⬆</a>
+      <p class="credits">Von Phillip, Simon</p>
+      <a href="#">⬆</a>
     </footer>
-</body>
+  </body>
 </html>
