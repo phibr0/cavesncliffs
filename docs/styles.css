@@ -1,0 +1,17 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.discord-content {
+  display: flex;
+}
+
+.discord-content > span {
+  margin-right: 1rem;
+  text-align: justify;
+}
+
+.install-content > img {
+  margin: 1rem 0;
+}
