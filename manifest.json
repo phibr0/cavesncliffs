@@ -3,7 +3,12 @@
     "ressources": {
         "1": {
             "mods": [],
-            "shader": [],
+            "shader": [
+                {
+                    "name": "Sildurs Vibrant Shaders v1.29 Lite.zip",
+                    "url": "https://ufile.io/nx4ufnqi"
+                }
+            ],
             "textures": []
         }
     }
