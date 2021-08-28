@@ -1,1 +1,1 @@
-The CavesNCliffs Installer CLI
+The Caves N Cliffs Installer CLI
