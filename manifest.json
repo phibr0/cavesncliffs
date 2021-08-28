@@ -2,7 +2,7 @@
     "currentVersion": 1,
     "ressources": {
         "1": {
-            "mods": [],
+            "mods": ["https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FoQqGKA37MYs%2Fmaxresdefault.jpg&f=1&nofb=1"],
             "shader": [],
             "textures": []
         }
