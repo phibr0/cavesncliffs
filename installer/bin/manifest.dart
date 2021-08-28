@@ -15,12 +15,12 @@ class Manifest {
   });
 
   final int currentVersion;
-  final Map<String, Files> ressources;
+  final Map<String, Ressource> ressources;
 
   factory Manifest.fromJson(Map<String, dynamic> json) => Manifest(
         currentVersion: json['currentVersion'],
-        ressources: Map.from(json['ressources'])
-            .map((k, v) => MapEntry<String, Files>(k, Files.fromJson(v))),
+        ressources: Map.from(json['ressources']).map(
+            (k, v) => MapEntry<String, Ressource>(k, Ressource.fromJson(v))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -30,24 +30,22 @@ class Manifest {
       };
 }
 
-class Files {
-  Files({
+class Ressource {
+  Ressource({
     required this.mods,
     required this.shader,
     required this.textures,
   });
 
-  final List<Ressource> mods;
-  final List<Ressource> shader;
-  final List<Ressource> textures;
+  final List<File> mods;
+  final List<File> shader;
+  final List<File> textures;
 
-  factory Files.fromJson(Map<String, dynamic> json) => Files(
-        mods: List<Ressource>.from(
-            json['mods'].map((x) => Ressource.fromJson(x))),
-        shader: List<Ressource>.from(
-            json['shader'].map((x) => Ressource.fromJson(x))),
-        textures: List<Ressource>.from(
-            json['textures'].map((x) => Ressource.fromJson(x))),
+  factory Ressource.fromJson(Map<String, dynamic> json) => Ressource(
+        mods: List<File>.from(json['mods'].map((x) => File.fromJson(x))),
+        shader: List<File>.from(json['shader'].map((x) => File.fromJson(x))),
+        textures:
+            List<File>.from(json['textures'].map((x) => File.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -57,8 +55,8 @@ class Files {
       };
 }
 
-class Ressource {
-  Ressource({
+class File {
+  File({
     required this.name,
     required this.url,
   });
@@ -66,7 +64,7 @@ class Ressource {
   final String name;
   final String url;
 
-  factory Ressource.fromJson(Map<String, dynamic> json) => Ressource(
+  factory File.fromJson(Map<String, dynamic> json) => File(
         name: json['name'],
         url: json['url'],
       );
