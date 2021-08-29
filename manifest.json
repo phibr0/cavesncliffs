@@ -1,5 +1,6 @@
 {
     "currentVersion": 1,
+    "fabricInstaller": "https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.7.4/fabric-installer-0.7.4.jar",
     "ressources": {
         "1": {
             "mods": [],
