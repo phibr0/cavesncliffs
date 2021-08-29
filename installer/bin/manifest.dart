@@ -12,19 +12,23 @@ class Manifest {
   Manifest({
     required this.currentVersion,
     required this.ressources,
+    required this.fabricInstaller,
   });
 
   final int currentVersion;
+  final String fabricInstaller;
   final Map<String, Ressource> ressources;
 
   factory Manifest.fromJson(Map<String, dynamic> json) => Manifest(
         currentVersion: json['currentVersion'],
         ressources: Map.from(json['ressources']).map(
             (k, v) => MapEntry<String, Ressource>(k, Ressource.fromJson(v))),
+        fabricInstaller: json['fabricInstaller'],
       );
 
   Map<String, dynamic> toJson() => {
         'currentVersion': currentVersion,
+        'fabricInstaller': fabricInstaller,
         'ressources': Map.from(ressources)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toJson())),
       };
