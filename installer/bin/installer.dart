@@ -35,13 +35,12 @@ Future<void> main(List<String> arguments) async {
 
   print('Möchtest du Fabric installieren? (Nur einmal erforderlich) [ja/nein]');
   var input = io.stdin.readLineSync();
-  if (input != null && input.toLowerCase().startsWith('n')) {
+  print('');
+  if (input != null && !input.toLowerCase().startsWith('n')) {
     await installFabric(tempDir, manifest.fabricInstaller);
   }
 
-  if (await backupDir(mcDir, ['resourcepacks', 'mods', 'shaderpacks'])) {
-    return;
-  }
+  await backupDir(mcDir, ['resourcepacks', 'mods', 'shaderpacks']);
 
   var futures = [
     installFiles(manifest.ressources[curVer.toString()]!.mods, mcDir, 'mods'),
@@ -63,40 +62,46 @@ Future<void> installFabric(io.Directory tempDir, String fabricUrl) async {
   if (result.statusCode == 200) {
     var file = io.File(p.join(tempDir.path, 'fabric.jar'));
     await file.writeAsBytes(result.bodyBytes);
-    await io.Process.run('java', ['-jar', 'fabric.jar', 'client'],
+    var process = await io.Process.run('java', ['-jar', 'fabric.jar', 'client'],
         workingDirectory: tempDir.path);
+    print(process.stdout);
+    if (process.exitCode != 0) {
+      printError(process.stderr);
+    }
   } else {
     printError('Installation von Fabric fehlgeschlagen');
   }
+  return;
 }
 
-Future<bool> backupDir(io.Directory mcDir, List<String> directories) async {
-  var error = false;
-  final backupDir = await io.Directory(p.join(mcDir.path,
-          'Backup ${DateTime.now().toIso8601String().replaceAll(':', '-')}'))
-      .create();
-  for (var dir in directories) {
-    final workingDir = io.Directory(p.join(mcDir.path, dir));
-    if (await workingDir.exists()) {
-      final backupSubDir =
-          await io.Directory(p.join(backupDir.path, dir)).create();
-      var stream = workingDir.list(recursive: true).asBroadcastStream();
-      if (!await stream.isEmpty) {
-        printWarning('$dir Ordner ist nicht leer. Starte Backup...');
-      }
-      await stream.forEach((element) async {
-        if (element is io.File) {
-          await element
-              .copy(p.join(backupSubDir.path, p.basename(element.path)));
-          if (await element.exists()) {
-            await element.delete();
-          }
-        }
-      });
+Future<void> backupDir(io.Directory mcDir, List<String> directories) async {
+  final backupFolderName =
+      'Backup ${DateTime.now().toIso8601String().replaceAll(':', '-')}';
+  final backupDir =
+      await io.Directory(p.join(mcDir.path, backupFolderName)).create();
+  for (var dirName in directories) {
+    final workingDir = io.Directory(p.join(mcDir.path, dirName));
+    final backupSubDir =
+        await io.Directory(p.join(backupDir.path, dirName)).create();
+    await copyDirectory(workingDir, backupSubDir);
+    workingDir.listSync().forEach((element) => element.delete(recursive: true));
+  }
+  printWarning(
+      'Backup alter Mods, Shader und Resourcepacks erstellt in: ${backupDir.path}\n');
+}
+
+Future<void> copyDirectory(
+    io.Directory source, io.Directory destination) async {
+  await for (var entity in source.list(recursive: false)) {
+    if (entity is io.Directory) {
+      var newDirectory = io.Directory(
+          p.join(destination.absolute.path, p.basename(entity.path)));
+      await newDirectory.create();
+      await copyDirectory(entity.absolute, newDirectory);
+    } else if (entity is io.File) {
+      await entity.copy(p.join(destination.path, p.basename(entity.path)));
     }
   }
-  printWarning('Backup erstellt in ${backupDir.path}\\\n');
-  return error;
 }
 
 Future<bool> installFiles(
@@ -120,7 +125,7 @@ Future<bool> installFiles(
 Future<Manifest?> getManifest() async {
   try {
     final uri = Uri.parse(
-        'https://raw.githubusercontent.com/phibr0/cavesncliffs/main/manifest.json?token=AOHZOJJKCSL6IFD4A3D76WLBFNJK6');
+        'https://cdn.discordapp.com/attachments/504000747478974477/881475635422310411/manifest.json');
     var response = await http.get(uri);
     return manifestFromJson(response.body);
   } catch (e) {
