@@ -10,4 +10,5 @@
 
 ## Installer
 
-![CavesNCliffs Installer Architecture](https://user-images.githubusercontent.com/59741989/131230266-b60796c2-3ec5-4411-a385-adf607afe717.png)
+![CavesNCliffs Installer Architecture](https://user-images.githubusercontent.com/59741989/131248076-cee6270b-7046-4615-97d4-75921a26a6b4.png)
+
