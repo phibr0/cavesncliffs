@@ -3,11 +3,40 @@
     "fabricInstaller": "https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.7.4/fabric-installer-0.7.4.jar",
     "ressources": {
         "1": {
-            "mods": [],
+            "mods": [
+                {
+                    "name": "Phosphor.jar",
+                    "url": ""
+                },
+                {
+                    "name": "Lithium.jar",
+                    "url": ""
+                },
+                {
+                    "name": "Hydrogen.jar",
+                    "url": ""
+                },
+                {
+                    "name": "Iris+Sodium.jar",
+                    "url": ""
+                },
+                {
+                    "name": "ProximityVoiceChat.jar",
+                    "url": ""
+                }
+            ],
             "shader": [
                 {
                     "name": "Sildurs Vibrant Shaders v1.29 Lite.zip",
                     "url": "https://ufile.io/nx4ufnqi"
+                },
+                {
+                    "name": "Sildurs Vibrant Shaders v1.29 High.zip",
+                    "url": ""
+                },
+                {
+                    "name": "Sildurs Vibrant Shaders v1.29 Extreme-VL.zip",
+                    "url": ""
                 }
             ],
             "textures": []
