@@ -123,9 +123,9 @@ Future<bool> installFiles(
 }
 
 Future<Manifest?> getManifest() async {
+  final uri = Uri.parse(
+      'https://raw.githubusercontent.com/phibr0/cavesncliffs/main/manifest.json');
   try {
-    final uri = Uri.parse(
-        'https://cdn.discordapp.com/attachments/504000747478974477/881475635422310411/manifest.json');
     var response = await http.get(uri);
     return manifestFromJson(response.body);
   } catch (e) {
